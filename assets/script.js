@@ -38,7 +38,9 @@ var Professionista = /** @class */ (function (_super) {
     };
     Professionista.prototype.redditoNetto = function () {
         var redditoNetto = this.utileTasse() - this.tasseInps() - this.tasseInps();
-        console.log("Quest'anno hai guadagnato ".concat(this.utileLordo, " togliendo le tasse al 22% ti rimangono ").concat(this.utileTasse(), ", poi da questo sottraiamo tasse Inps di ").concat(this.tasseInps(), " e le tasse irpef di ").concat(this.tasseIrpef(), " quindi il tuo guadagno netto \u00E8 di ").concat(redditoNetto));
+        var fraseDeffetto = "Quest'anno hai guadagnato ".concat(this.utileLordo, " togliendo le tasse al 22% ti rimangono ").concat(this.utileTasse(), ", poi da questo sottraiamo tasse Inps di ").concat(this.tasseInps(), " e le tasse irpef di ").concat(this.tasseIrpef(), " quindi il tuo guadagno netto \u00E8 di ").concat(redditoNetto);
+        console.log(fraseDeffetto);
+        return fraseDeffetto;
     };
     return Professionista;
 }(Lavoratore));
@@ -63,7 +65,9 @@ var Artigiano = /** @class */ (function (_super) {
     };
     Artigiano.prototype.redditoNetto = function () {
         var redditoNetto = this.utileTasse() - this.tasseInps() - this.tasseInps();
-        console.log("Quest'anno hai guadagnato ".concat(this.utileLordo, " togliendo le tasse al 22% ti rimangono ").concat(this.utileTasse(), ", poi da questo sottraiamo tasse Inps di ").concat(this.tasseInps(), " e le tasse irpef di ").concat(this.tasseIrpef(), " quindi il tuo guadagno netto \u00E8 di ").concat(redditoNetto));
+        var fraseDeffetto = "Quest'anno hai guadagnato ".concat(this.utileLordo, " togliendo le tasse al 22% ti rimangono ").concat(this.utileTasse(), ", poi da questo sottraiamo tasse Inps di ").concat(this.tasseInps(), " e le tasse irpef di ").concat(this.tasseIrpef(), " quindi il tuo guadagno netto \u00E8 di ").concat(redditoNetto);
+        console.log(fraseDeffetto);
+        return fraseDeffetto;
     };
     return Artigiano;
 }(Lavoratore));
@@ -88,9 +92,49 @@ var Commerciante = /** @class */ (function (_super) {
     };
     Commerciante.prototype.redditoNetto = function () {
         var redditoNetto = this.utileTasse() - this.tasseInps() - this.tasseInps();
-        console.log("Quest'anno hai guadagnato ".concat(this.utileLordo, " togliendo le tasse al 22% ti rimangono ").concat(this.utileTasse(), ", poi da questo sottraiamo tasse Inps di ").concat(this.tasseInps(), " e le tasse irpef di ").concat(this.tasseIrpef(), " quindi il tuo guadagno netto \u00E8 di ").concat(redditoNetto));
+        var fraseDeffetto = "Quest'anno hai guadagnato ".concat(this.utileLordo, " togliendo le tasse al 22% ti rimangono ").concat(this.utileTasse(), ", poi da questo sottraiamo tasse Inps di ").concat(this.tasseInps(), " e le tasse irpef di ").concat(this.tasseIrpef(), " quindi il tuo guadagno netto \u00E8 di ").concat(redditoNetto);
+        console.log(fraseDeffetto);
+        return fraseDeffetto;
     };
     return Commerciante;
 }(Lavoratore));
 var commerciante = new Commerciante(1000);
 commerciante.redditoNetto();
+var form = document.getElementById("form");
+console.log(form);
+var inputRadio1 = document.getElementById("flexRadioDefault1");
+console.log(inputRadio1);
+var inputRadio2 = document.getElementById("flexRadioDefault2");
+console.log(inputRadio2);
+var inputRadio3 = document.getElementById("flexRadioDefault3");
+console.log(inputRadio3);
+form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var input = parseInt(document.getElementById("lordo").value);
+    console.log(input);
+    var main = document.getElementById("result");
+    console.log(main);
+    main.innerHTML = "";
+    var p = document.createElement("p");
+    switch (true) {
+        case inputRadio1.checked:
+            console.log(1);
+            var professionista1 = new Professionista(input);
+            p.innerText = professionista1.redditoNetto();
+            break;
+        case inputRadio2.checked:
+            console.log(2);
+            var artigiano1 = new Artigiano(input);
+            p.innerText = artigiano1.redditoNetto();
+            break;
+        case inputRadio3.checked:
+            console.log(3);
+            var commerciante1 = new Commerciante(input);
+            p.innerText = commerciante1.redditoNetto();
+            break;
+        default:
+            console.log("codice rotto");
+    }
+    console.log(p);
+    main.appendChild(p);
+});
