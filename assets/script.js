@@ -37,7 +37,7 @@ var Professionista = /** @class */ (function (_super) {
         return tasseInps;
     };
     Professionista.prototype.redditoNetto = function () {
-        var redditoNetto = this.utileTasse() - this.tasseInps() - this.tasseInps();
+        var redditoNetto = this.utileTasse() - this.tasseIrpef() - this.tasseInps();
         var fraseDeffetto = "Quest'anno hai guadagnato ".concat(this.utileLordo, " togliendo le tasse al 22% ti rimangono ").concat(this.utileTasse(), ", poi da questo sottraiamo tasse Inps di ").concat(this.tasseInps(), " e le tasse irpef di ").concat(this.tasseIrpef(), " quindi il tuo guadagno netto \u00E8 di ").concat(redditoNetto);
         console.log(fraseDeffetto);
         return fraseDeffetto;
@@ -64,7 +64,7 @@ var Artigiano = /** @class */ (function (_super) {
         return tasseInps;
     };
     Artigiano.prototype.redditoNetto = function () {
-        var redditoNetto = this.utileTasse() - this.tasseInps() - this.tasseInps();
+        var redditoNetto = this.utileTasse() - this.tasseIrpef() - this.tasseInps();
         var fraseDeffetto = "Quest'anno hai guadagnato ".concat(this.utileLordo, " togliendo le tasse al 22% ti rimangono ").concat(this.utileTasse(), ", poi da questo sottraiamo tasse Inps di ").concat(this.tasseInps(), " e le tasse irpef di ").concat(this.tasseIrpef(), " quindi il tuo guadagno netto \u00E8 di ").concat(redditoNetto);
         console.log(fraseDeffetto);
         return fraseDeffetto;
@@ -91,7 +91,7 @@ var Commerciante = /** @class */ (function (_super) {
         return tasseInps;
     };
     Commerciante.prototype.redditoNetto = function () {
-        var redditoNetto = this.utileTasse() - this.tasseInps() - this.tasseInps();
+        var redditoNetto = this.utileTasse() - this.tasseIrpef() - this.tasseInps();
         var fraseDeffetto = "Quest'anno hai guadagnato ".concat(this.utileLordo, " togliendo le tasse al 22% ti rimangono ").concat(this.utileTasse(), ", poi da questo sottraiamo tasse Inps di ").concat(this.tasseInps(), " e le tasse irpef di ").concat(this.tasseIrpef(), " quindi il tuo guadagno netto \u00E8 di ").concat(redditoNetto);
         console.log(fraseDeffetto);
         return fraseDeffetto;
@@ -116,6 +116,8 @@ form.addEventListener("submit", function (e) {
     console.log(main);
     main.innerHTML = "";
     var p = document.createElement("p");
+    p.classList.add("fw-semibold");
+    p.classList.add("text-dark-emphasis");
     switch (true) {
         case inputRadio1.checked:
             console.log(1);

@@ -31,7 +31,7 @@ class Professionista extends Lavoratore {
   }
   redditoNetto() {
     const redditoNetto =
-      this.utileTasse() - this.tasseInps() - this.tasseInps();
+      this.utileTasse() - this.tasseIrpef() - this.tasseInps();
     const fraseDeffetto = `Quest'anno hai guadagnato ${
       this.utileLordo
     } togliendo le tasse al 22% ti rimangono ${this.utileTasse()}, poi da questo sottraiamo tasse Inps di ${this.tasseInps()} e le tasse irpef di ${this.tasseIrpef()} quindi il tuo guadagno netto è di ${redditoNetto}`;
@@ -66,7 +66,7 @@ class Artigiano extends Lavoratore {
   }
   redditoNetto() {
     const redditoNetto =
-      this.utileTasse() - this.tasseInps() - this.tasseInps();
+      this.utileTasse() - this.tasseIrpef() - this.tasseInps();
     const fraseDeffetto = `Quest'anno hai guadagnato ${
       this.utileLordo
     } togliendo le tasse al 22% ti rimangono ${this.utileTasse()}, poi da questo sottraiamo tasse Inps di ${this.tasseInps()} e le tasse irpef di ${this.tasseIrpef()} quindi il tuo guadagno netto è di ${redditoNetto}`;
@@ -101,7 +101,7 @@ class Commerciante extends Lavoratore {
   }
   redditoNetto() {
     const redditoNetto =
-      this.utileTasse() - this.tasseInps() - this.tasseInps();
+      this.utileTasse() - this.tasseIrpef() - this.tasseInps();
     const fraseDeffetto = `Quest'anno hai guadagnato ${
       this.utileLordo
     } togliendo le tasse al 22% ti rimangono ${this.utileTasse()}, poi da questo sottraiamo tasse Inps di ${this.tasseInps()} e le tasse irpef di ${this.tasseIrpef()} quindi il tuo guadagno netto è di ${redditoNetto}`;
@@ -139,6 +139,8 @@ form.addEventListener("submit", function (e) {
   console.log(main);
   main.innerHTML = "";
   const p = document.createElement("p");
+  p.classList.add("fw-semibold");
+  p.classList.add("text-dark-emphasis");
 
   switch (true) {
     case inputRadio1.checked:
